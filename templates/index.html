@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CyfNet</title>
+    <link rel="stylesheet" href="static/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+</head> 
+<body>
+    <div class="container">
+        <div class="nav" id="yes">
+            <nav>
+                <ul>
+                    <li><a href="/" onmouseover="lol()" onmouseout="lolrev()" ><i class="fa-solid fa-house"></i></a></li>
+                    <li><a href="mailto:itscyfix@gmail.com" onmouseover="lmao()" onmouseout="lolrev()" target="_blank"><i class="fa-solid fa-envelope"></i></a></li>
+                    <li><a href="https://github.com/itscyfix" onmouseover="lole()" onmouseout="lolrev()" target="_blank"><i class="fa-brands fa-github"></i></a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="logo">
+            <img src="./static/imgs/CyfNet-logos_black.png" alt="">
+        </div>
+        <div class="inputs">
+            <form action="/" method="POST">
+                <input type="text" name="name" placeholder="Name">
+                <input type="text" name="msg" placeholder="Msg">
+                <input type="submit" value="Send">
+            </form>
+        </div>
+        <hr>
+        <div class="contentt">
+
+            {% if allTodo|length == 0 %}
+                       
+                    <div class="n" >
+                        no msg till now
+                      </div>
+                        {% else %} 
+                        <table class="styled-table">
+                            <thead>
+                              <tr>
+                                <th scope="col">SNo</th>
+                                <th scope="col">Title</th>
+                                <th scope="col">Description</th>
+                                <th scope="col">Time</th>
+                                <th scope="col">Actions</th>
+                              </tr>
+                            </thead>
+                            
+                            <tbody>
+                  {% for todo in allTodo %}
+                  <tr>
+                    <th scope="row">{{loop.index}}</th>
+                    <td>{{todo.title}}</td>
+                    <td>{{todo.desc}}</td>
+                    <td>{{todo.date_created}}</td>
+                    <td>
+                      
+                      <a href="/delete/{{todo.sno}}" type="button" class="btn btn-outline-dark btn-sm mx-1">Delete</button>
+                    
+                    </td>
+                  </tr>
+                  
+                  {% endfor %}
+                </tbody>
+                </table>
+                  {% endif %}
+        </div>
+        </div>
+    </div>
+    <script src="../static/main.js"></script>
+</body>
+</html>
